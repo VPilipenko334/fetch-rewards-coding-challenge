@@ -1,5 +1,6 @@
 import './stylesheets/App.css';
 import Form from './components/Form';
+import './stylesheets/Form.css'
 
 function App() {
   return (

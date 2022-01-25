@@ -22,8 +22,8 @@ const Form = () => {
             console.log(data.states)
             console.log(data.occupations)
 
-            // setStates(data.states);
-            // setOccupations(data.occupations);
+            setStates(data.states);
+            setOccupations(data.occupations);
         })
         // .catch(error => console.log(error))
 
@@ -47,9 +47,10 @@ const Form = () => {
         }
        
     return (
-        <div> 
-            <h1 className="form-wrapper">Form:</h1>
-                <br/>
+        <div className="form-outer-wrapper"> 
+            <h1 className="form-inner-wrapper">Form:</h1>
+
+            <h2>Please fill out all the fields before submitting!</h2>
 
             {success ? <p>Success! Thank you for registering!!!</p> : faliure }
 
@@ -81,15 +82,17 @@ const Form = () => {
             <div className="dropdown-values">
                     <label className="occupations">Choose an Occupation:</label>
                     <select name="occupations" id="occupations">
-                        <option value="rigatoni">hello</option>
+                        <option value="occupations">
+                            {occupations.map(occupation => <p>occupation</p>)}
+                        </option>
                         
                     </select>
                 <br/><br/>
                     <label className="states">Choose a State:</label>
-                    <select name="states" id="states">
-                        {/* <option value="states">{states.map(state => <p>state</p>)}</option> */}
-                
-                    </select>
+                    <div className="states-dropdown">
+                       {/* {states.map(state =>  <select value="states">state</select>)} */}
+                    </div>
+                   
 
                 {/* {occupations}
                 {states} */}

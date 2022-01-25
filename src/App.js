@@ -1,9 +1,10 @@
 import './stylesheets/App.css';
+import Form from './components/Form';
 
 function App() {
   return (
     <div className="App">
-        <h1>React is working</h1>
+      <Form />
     </div>
   );
 }

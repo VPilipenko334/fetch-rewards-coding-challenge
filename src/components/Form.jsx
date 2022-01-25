@@ -22,8 +22,8 @@ const Form = () => {
             console.log(data.states)
             console.log(data.occupations)
 
-            setStates(data.states);
-            setOccupations(data.occupations);
+            // setStates(data.states);
+            // setOccupations(data.occupations);
         })
         // .catch(error => console.log(error))
 
@@ -82,16 +82,18 @@ const Form = () => {
             <div className="dropdown-values">
                     <label className="occupations">Choose an Occupation:</label>
                     <select name="occupations" id="occupations">
-                        <option value="occupations">
-                            {occupations.map(occupation => <p>occupation</p>)}
+                        <option value="occupations"> hi
+                            {/* {occupations.map(occupation => <p>occupation</p>)} */}
                         </option>
                         
                     </select>
                 <br/><br/>
                     <label className="states">Choose a State:</label>
-                    <div className="states-dropdown">
-                       {/* {states.map(state =>  <select value="states">state</select>)} */}
-                    </div>
+                    <select name="states" id="states">
+                        <option value="states"> hi
+                            {/* {states.map(state =>  <select value="states">state</select>)} */}
+                        </option>
+                    </select>
                    
 
                 {/* {occupations}

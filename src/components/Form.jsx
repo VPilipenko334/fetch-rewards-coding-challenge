@@ -19,20 +19,11 @@ const Form = () => {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                // setOccupations(data.occupations);
-                // console.log(data)
-                // console.log(data.states)
-                console.log(data.states)
-                // console.log(data.occupations)
-
                 setStates(data.states);
                 setOccupations(data.occupations);
             })
+            .catch(error => setFaliure('Please fill out all the fields before proceeding'))
     }, [])
-        // empty array -> runs once when the component mounts
-    
-        // .catch(error => console.log(error))
-
 
         //handlers for every keystroke 
        const handlefullNameChange = (e) => {
@@ -50,6 +41,7 @@ const Form = () => {
         const handleSubmit = (e) => {
             e.preventDefault();
             setSuccess(true);
+            setFaliure(false);
         }
        
     return (
@@ -95,21 +87,16 @@ const Form = () => {
                     <br/><br/>
 
                     <label className="states">Choose a State:</label>
-                    {/* <select name="states" id="states">
-                        {states.map(state =>
-                            <option value="states">{state}</option>)}
-                    </select> */}
+                    <select name="states" id="states">
+                        {states.map(state => 
+                                <option value="states">{state.name}</option>)}
+                            )
+                    </select>
             </div>  
-
-            <div>
-
-            </div>
 
             <br/>
 
             <button onClick={handleSubmit}>Submit</button>
-
-            {/* {faliure ? <p>You cannot submit the form unless all the fields are filled out!</p> : success} */}
 
         </div>
     )

@@ -9,11 +9,11 @@ const Form = () => {
     })
     const [occupations, setOccupations] = useState([]);
     const [states, setStates] = useState([]);
+    const [valid, setValid] = useState(false);
     const [success, setSuccess] = useState(false);
     const [faliure, setFaliure] = useState(true);
 
     const url = 'https://frontend-take-home.fetchrewards.com/form'
-
 
     useEffect(() => {
         fetch(url)
@@ -40,6 +40,9 @@ const Form = () => {
 
         const handleSubmit = (e) => {
             e.preventDefault();
+            if (values.firstName && values.email && values.password) {
+                setValid(true);
+            }
             setSuccess(true);
             setFaliure(false);
         }
@@ -48,25 +51,33 @@ const Form = () => {
         <div className="form-outer-wrapper"> 
             <h1 className="form-inner-wrapper">Form:</h1>
 
-            <h2>Please fill out all the fields before submitting!</h2>
-
-            {success ? <p>Success! Thank you for registering!!!</p> : faliure }
+            {success  && valid ? <div className=''>Success! Thank you for registering!!!</div> : faliure}
 
             <div className="values-form-wrapper">
+
                     <input 
                     value={values.fullName}
                     onChange={handlefullNameChange}
                     className="full-name"
                     placeholder="Full Name"
                     name="fullName" />
-                <br /><br />
+                    <br/>
+                    
+                    {success && !values.fullName ? <span className="error-name">Please enter a valid full name</span> : faliure }
+
+                    <br /><br />
+
                     <input 
                     value={values.email}
                     onChange={handleEmailChange}
                     className="email"
                     placeholder="Email"
                     name="email" />
-                <br /><br />
+                    <br />
+                    
+                    {success && !values.email ? <span className="error-email">Please enter a valid email address</span> : faliure }
+
+                    <br /><br />
                     <input 
                     value={values.password}
                     onChange={handlePassword}
@@ -74,6 +85,9 @@ const Form = () => {
                     placeholder="password"
                     name="password"
                     type="password" />
+                    <br />
+
+                    {success && !values.password ? <span className="error-password">Please enter a valid password</span> : null}
             </div>
                 <br/>
 
@@ -98,6 +112,9 @@ const Form = () => {
 
             <button onClick={handleSubmit}>Submit</button>
 
+            <div className="faliure-wrapper">
+               { success ? <h2>Please fill out all the fields before submitting!</h2> : faliure }
+            </div>
         </div>
     )
 }

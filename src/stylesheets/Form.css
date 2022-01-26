@@ -22,3 +22,19 @@
     margin-top: 100px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.success {
+    color: red;
+}
+
+.error-name {
+    color: red; 
+}
+
+.error-email{
+    color: red; 
+}
+
+.error-password {
+    color: red; 
+}

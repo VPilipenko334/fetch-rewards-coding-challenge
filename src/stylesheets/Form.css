@@ -38,3 +38,7 @@
 .error-password {
     color: red; 
 }
+
+.field-error {
+    color: red;
+}

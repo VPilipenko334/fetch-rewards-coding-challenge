@@ -10,6 +10,7 @@ const Form = () => {
     const [occupations, setOccupations] = useState([]);
     const [states, setStates] = useState([]);
     const [valid, setValid] = useState(false);
+    const [submitted, setSubmitted] = useState(true);
     const [success, setSuccess] = useState(false);
     const [faliure, setFaliure] = useState(true);
 
@@ -23,7 +24,29 @@ const Form = () => {
                 setOccupations(data.occupations);
             })
             .catch(error => setFaliure('Please fill out all the fields before proceeding'))
+      
     }, [])
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            "name": "???",
+            "email": "???",
+            "password": "???",
+            "occupation": "???",
+            "state": "???"
+        })
+    })
+        .then(response => {
+            if (response.status === 200) {
+                console.log('Form was successfully submitted!');
+            } else {
+                console.log('Form has not not been successfully submitted, please try again')
+            }
+        })
 
         //handlers for every keystroke 
        const handlefullNameChange = (e) => {
@@ -40,18 +63,21 @@ const Form = () => {
 
         const handleSubmit = (e) => {
             e.preventDefault();
-            if (values.firstName && values.email && values.password) {
+            if (values.fullName && values.email && values.password) {
                 setValid(true);
+                setSubmitted(true);
+                setFaliure(false);
             }
             setSuccess(true);
-            setFaliure(false);
         }
        
     return (
         <div className="form-outer-wrapper"> 
-            <h1 className="form-inner-wrapper">Form:</h1>
+            <form className="form-inner-wrapper" onSubmit={handleSubmit}>Form:
 
-            {success  && valid ? <div className=''>Success! Thank you for registering!!!</div> : faliure}
+            <br />
+
+            { submitted && valid ? <span className='success'>Success! Thank you for registering!!!</span> : faliure }
 
             <div className="values-form-wrapper">
 
@@ -110,12 +136,10 @@ const Form = () => {
 
             <br/>
 
-            <button onClick={handleSubmit}>Submit</button>
+            <button className="submit-button" type="submit">Submit</button>
 
-            <div className="faliure-wrapper">
-               { success ? <h2>Please fill out all the fields before submitting!</h2> : faliure }
-            </div>
-        </div>
+        </form >
+    </div>
     )
 }
 

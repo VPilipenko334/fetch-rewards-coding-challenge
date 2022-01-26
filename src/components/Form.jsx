@@ -138,6 +138,10 @@ const Form = () => {
 
             <button className="submit-button" type="submit">Submit</button>
 
+            <br/>              
+            <h2>Created by: Veronika Pilipenko</h2>
+            <p>Click here for my <a href="https://github.com/VPilipenko334">Github Profile</a></p>
+
         </form >
     </div>
     )

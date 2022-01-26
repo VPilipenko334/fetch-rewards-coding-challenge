@@ -73,9 +73,9 @@ const Form = () => {
        
     return (
         <div className="form-outer-wrapper"> 
-            <form className="form-inner-wrapper" onSubmit={handleSubmit}>Form:
-
-            <br />
+            <form className="form-inner-wrapper" onSubmit={handleSubmit}>
+                <h1>Form:</h1>
+                <h2>Please fill out all the details of the form below:</h2>
 
             { submitted && valid ? <span className='success'>Success! Thank you for registering!!!</span> : faliure }
 
@@ -91,7 +91,7 @@ const Form = () => {
                     
                     {success && !values.fullName ? <span className="error-name">Please enter a valid full name</span> : faliure }
 
-                    <br /><br />
+                    <br />
 
                     <input 
                     value={values.email}
@@ -103,7 +103,7 @@ const Form = () => {
                     
                     {success && !values.email ? <span className="error-email">Please enter a valid email address</span> : faliure }
 
-                    <br /><br />
+                    <br />
                     <input 
                     value={values.password}
                     onChange={handlePassword}

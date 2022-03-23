@@ -28,15 +28,21 @@ const Form = () => {
 
     //handlers for every keystroke
     const handlefullNameChange = (e) => {
-        setValues({ ...values, fullName: e.target.value });
+        setValues({
+            ...values, 
+            fullName: e.target.value });
     };
 
     const handleEmailChange = (e) => {
-        setValues({ ...values, email: e.target.value });
+        setValues({ 
+            ...values, 
+            email: e.target.value });
     };
 
     const handlePassword = (e) => {
-        setValues({ ...values, password: e.target.value });
+        setValues({ 
+            ...values, 
+            password: e.target.value });
     };
 
     const handleSubmit = (e) => {
